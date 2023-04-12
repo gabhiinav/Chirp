@@ -1,6 +1,7 @@
 import './globals.css'
 import Nav from "./Nav"
 import QueryWrapper from './QueryWrapper'
+import AuthContext from "./auth/AuthContext"
 
 export const metadata = {
   title: 'Chirp',
@@ -15,10 +16,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='mx-4 md:mx-48 xl:mx-96 bg-gray-200'>
-      <QueryWrapper>
-        <Nav />
-        {children}
-      </QueryWrapper>
+        <QueryWrapper>
+          <AuthContext>
+            <Nav />
+            {children}
+          </AuthContext>
+        </QueryWrapper>
       </body>
     </html>
   )
