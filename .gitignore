@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+#deletePost
+dashboard
+myPosts.ts
+
 # testing
 /coverage
 
