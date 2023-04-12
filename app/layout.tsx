@@ -1,4 +1,6 @@
 import './globals.css'
+import Nav from "./Nav"
+import QueryWrapper from './QueryWrapper'
 
 export const metadata = {
   title: 'Chirp',
@@ -12,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className='mx-4 md:mx-48 xl:mx-96 bg-gray-200'>
+      <QueryWrapper>
+        <Nav />
+        {children}
+      </QueryWrapper>
+      </body>
     </html>
   )
 }
