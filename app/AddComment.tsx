@@ -39,7 +39,7 @@ export default function AddComment({ id }: PostProps) {
       onError: (error) => {
         console.log(error)
         setIsDisabled(false)
-        toast.error(error?.response?.data.message, { id: commentToastId })
+        // toast.error(error?.response?.data.message, { id: commentToastId })
       },
     }
   )
