@@ -2,15 +2,14 @@
 
 import Post from "../../Post"
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
 import AddComment from "../../AddComment"
 import { PostType } from "../../types/Post"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
 const fetchDetails = async (slug: string) => {
-    const response = await axios.get(`/api/posts/${slug}`)
-    return response.data
+  const response = await fetch(`/api/posts/${slug}`)
+  return response.json
 }
 
 type URL = {

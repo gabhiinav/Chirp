@@ -3,7 +3,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import toast from "react-hot-toast"
-import axios, { AxiosError } from "axios"
 
 export default function CreatePost() {
   const [title, setTitle] = useState("")
@@ -13,8 +12,12 @@ export default function CreatePost() {
 
   const { mutate } = useMutation(
     async (title: string) =>
-      await axios.post("/api/posts/createPost", {
-        title,
+      await fetch("/api/posts/createPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ title }),
       }),
     {
       onError: (error) => {
@@ -31,6 +34,7 @@ export default function CreatePost() {
       },
     }
   )
+
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsDisabled(true)

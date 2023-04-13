@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import axios, { AxiosError } from "axios"
 import toast from "react-hot-toast"
 import { PostType } from "./types/Post"
 
@@ -22,7 +21,13 @@ export default function AddComment({ id }: PostProps) {
   const queryClient = useQueryClient()
   const { mutate } = useMutation(
     async (data: Comment) => {
-      return axios.post("/api/posts/addComment", { data })
+      return fetch("/api/posts/addComment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ data }),
+      })
     },
     {
       onSuccess: (data) => {
@@ -34,9 +39,7 @@ export default function AddComment({ id }: PostProps) {
       onError: (error) => {
         console.log(error)
         setIsDisabled(false)
-        if (error instanceof AxiosError) {
-          toast.error(error?.response?.data.message, { id: commentToastId })
-        }
+        toast.error(error?.response?.data.message, { id: commentToastId })
       },
     }
   )

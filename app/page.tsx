@@ -3,12 +3,11 @@
 import CreatePost from "./CreatePost"
 import Post from "./Post"
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
 import { PostsType } from "./types/Posts"
 
 const allPosts = async () => {
-  const response = await axios.get("/api/posts/homePosts")
-  return response.data
+  const response = await fetch("/api/posts/homePosts")
+  return response.json()
 }
 
 export default function Home() {
