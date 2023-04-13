@@ -21,9 +21,7 @@ export default function CreatePost() {
       }),
     {
       onError: (error) => {
-        if (error instanceof AxiosError) {
-          toast.error(error?.response?.data.message, { id: toastPostID })
-        }
+        console.log(error)
         setIsDisabled(false)
       },
       onSuccess: (data) => {
