@@ -18,6 +18,7 @@ export default function RootLayout({
       <body className='mx-4 md:mx-48 xl:mx-96 bg-gray-200'>
         <QueryWrapper>
           <AuthContext>
+            {/* @ts-expect-error */}
             <Nav />
             {children}
           </AuthContext>
