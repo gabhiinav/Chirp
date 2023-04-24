@@ -11,32 +11,45 @@ export default function CreatePost() {
   let toastPostID: string
 
   const { mutate } = useMutation(
-    async (title: string) =>
-      await fetch("/api/posts/createPost", {
+    async (title: string) => {
+      const response = await fetch("/api/posts/createPost", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title }),
-      }),
+        body: JSON.stringify({
+          title,
+        }),
+      });
+      if (!response.ok) {
+        const errorData: { message: string } = await response.json();
+        throw new Error(errorData.message);
+      }
+      const data = await response.json();
+      return data;
+    },
     {
-      onError: (error) => {
-        console.log(error)
-        setIsDisabled(false)
+      onError: (error: unknown) => {
+        if (error instanceof Error) {
+          toast.error(error.message, { id: toastPostID });
+        }
+        setIsDisabled(false);
       },
       onSuccess: (data) => {
-        queryClient.invalidateQueries(["posts"])
-        toast.success("Post has been made.", { id: toastPostID })
-        setTitle("")
-        setIsDisabled(false)
+        queryClient.invalidateQueries(["posts"]);
+        toast.dismiss(toastPostID);
+        toastPostID = "";
+        toast.success("Post has been made.", { id: toastPostID });
+        setTitle("");
+        setIsDisabled(false);
       },
     }
-  )
+  );
 
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsDisabled(true)
-    toastPostID = toast.loading("Creating your post...", { id: toastPostID })
+    toastPostID = toast.loading("Creating your post", { id: toastPostID })
     mutate(title)
   }
 
