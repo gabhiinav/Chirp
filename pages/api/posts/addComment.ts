@@ -9,9 +9,7 @@ export default async function handler(
 ) {
     const session = await getServerSession(req, res, authOptions)
     if (!session) {
-      return res
-        .status(401)
-        .json({ message: "Login to post a comment." })
+      return res.status(401).json({ message: "Login to make a comment." })
     }
 
     const prismaUser = await prisma.user.findUnique({
@@ -20,9 +18,8 @@ export default async function handler(
 
     if (req.method === "POST") {
         const { title, postId } = req.body.data
-        console.log(title, postId)
         if (!title.length) {
-          return res.status(401).json({ message: "Please enter some text" })
+          return res.status(401).json({ message: "You need to enter some text." })
     }
     
     try {
@@ -35,7 +32,7 @@ export default async function handler(
         })
         res.status(200).json(result)
       } catch (err) {
-        res.status(403).json({ err: "Error has occured while making a post" })
+        res.status(403).json({ err: "Error." })
       }
     }
 }

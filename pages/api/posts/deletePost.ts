@@ -9,9 +9,7 @@ export default async function handler(
 ) {
     const session = await getServerSession(req, res, authOptions)
     if (!session) {
-      return res
-        .status(401)
-        .json({ message: "How did you get here?" })
+      return res.status(401).json({ message: "How did you get here?" })
     }
     
     if (req.method === "DELETE") {
