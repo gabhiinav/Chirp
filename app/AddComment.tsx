@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import toast from "react-hot-toast"
-import { PostType } from "./types/Post"
 
 type Comment = {
   postId?: string
@@ -62,7 +61,7 @@ export default function AddComment({ id }: PostProps) {
   }
   return (
     <form onSubmit={submitPost} className="my-8">
-      <h3 className="text-xl">Add a comment</h3>
+      <h3 className="text-xl">Comments</h3>
 
       <div className="flex flex-col my-2">
         <input
@@ -79,7 +78,7 @@ export default function AddComment({ id }: PostProps) {
           className=" text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
           type="submit"
         >
-          Add Comment 🚀
+          Add Comment
         </button>
         <p
           className={`font-bold  ${

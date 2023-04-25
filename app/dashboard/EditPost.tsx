@@ -59,7 +59,7 @@ export default function EditPost({
       className="bg-white my-8 p-8 rounded-lg "
     >
       <div className="flex items-center gap-2">
-        <Image width={32} height={32} src={avatar} alt="avatar" />
+        <Image width={32} height={32} src={avatar} alt="avatar" className = "rounded-full" />
         <h3 className="font-bold text-gray-700">{name}</h3>
       </div>
       <div className="my-8 ">
@@ -69,7 +69,7 @@ export default function EditPost({
         <p className=" text-sm font-bold text-gray-700">
           {comments?.length} Comments
         </p>
-        <button
+        {/* <button
           onClick={(e) => {
             e.stopPropagation();
             deletePost();
@@ -77,7 +77,7 @@ export default function EditPost({
           className="text-sm font-bold text-red-500"
         >
           Delete
-        </button>
+        </button> */}
       </div>
     </motion.div>
   );

@@ -49,6 +49,7 @@ export default function PostDetail(url: URL) {
               height={24}
               src={comment.user?.image}
               alt="avatar"
+              className="rounded-full"
             />
             <h3 className="font-bold">{comment?.user?.name}</h3>
             <h2 className="text-sm">{comment.createdAt}</h2>
