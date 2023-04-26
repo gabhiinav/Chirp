@@ -72,7 +72,7 @@ export default function CreatePost() {
         >{`${title.length}/300`}</p>
         <button
           disabled={isDisabled}
-          className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
+          className="text-sm bg-blue-400 text-white py-2 px-6 rounded-xl disabled:opacity-25"
           type="submit"
         >
           Create Post
