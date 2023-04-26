@@ -54,7 +54,7 @@ export default function CreatePost() {
   }
 
   return (
-    <form onSubmit={submitPost} className="bg-white my-8 p-8 rounded-md ">
+    <form onSubmit={submitPost} className="bg-white my-8 p-8 rounded-md">
       <div className="flex flex-col my-4">
         <textarea
           onChange={(e) => setTitle(e.target.value)}
@@ -75,7 +75,7 @@ export default function CreatePost() {
           className="text-sm bg-teal-600 text-white py-2 px-6 rounded-xl disabled:opacity-25"
           type="submit"
         >
-          Create post
+          Create Post
         </button>
       </div>
     </form>
