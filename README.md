@@ -1,4 +1,4 @@
-# Chirp
+# Chirp - Minimal Messageboard
 
 Tech Stack:
 
