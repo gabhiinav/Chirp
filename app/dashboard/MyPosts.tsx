@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import EditPost from "./EditPost";
 import { useQuery } from "@tanstack/react-query";
@@ -13,7 +13,9 @@ const fetchMyPosts = async () => {
 };
 
 export default function MyPosts(): JSX.Element {
-  const { data, isLoading } = useQuery<MyPosts>(["my-posts"], { queryFn: fetchMyPosts });
+  const { data, isLoading } = useQuery<MyPosts>(["my-posts"], {
+    queryFn: fetchMyPosts,
+  });
   if (isLoading) return <h1>Posts are loading...</h1>;
   if (data) console.log(data);
   return (
