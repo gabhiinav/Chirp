@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../prisma/client";
+import type { NextApiRequest, NextApiResponse } from "next"
+import prisma from "../../../prisma/client"
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,10 +16,10 @@ export default async function handler(
         orderBy: {
           createdAt: "desc",
         },
-      });
-      res.status(200).json(data);
+      })
+      res.status(200).json(data)
     } catch (err) {
-      res.status(403).json({ err: "Error." });
+      res.status(403).json({ err: "Error." })
     }
   }
 }

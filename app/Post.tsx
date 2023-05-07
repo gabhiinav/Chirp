@@ -1,7 +1,7 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+"use client"
+import Image from "next/image"
+import Link from "next/link"
+import { motion } from "framer-motion"
 
 interface PostProps {
   id: number;
@@ -11,19 +11,13 @@ interface PostProps {
   comments?: string[];
 }
 
-export default function PostPost({
-  id,
-  name,
-  avatar,
-  postTitle,
-  comments,
-}: PostProps): JSX.Element {
+export default function PostPost({ id, name, avatar, postTitle, comments, }: PostProps): JSX.Element {
   return (
     <motion.div
       animate={{ opacity: 1, scale: 1 }}
       initial={{ opacity: 0, scale: 0.8 }}
       transition={{ ease: "easeOut" }}
-      className="my-8 rounded-lg bg-white p-8"
+      className="bg-white my-8 p-8 rounded-lg"
     >
       <div className="flex items-center gap-2">
         <Image
@@ -38,7 +32,7 @@ export default function PostPost({
       <div className="my-8 ">
         <p className="break-all">{postTitle}</p>
       </div>
-      <div className="flex cursor-pointer items-center gap-4">
+      <div className="flex gap-4 cursor-pointer items-center">
         <Link
           href={{
             pathname: `/post/${id}`,
@@ -50,5 +44,5 @@ export default function PostPost({
         </Link>
       </div>
     </motion.div>
-  );
+  )
 }

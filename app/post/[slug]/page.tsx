@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import Post from "../../Post";
-import AddComment from "../../AddComment";
-import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
-import { motion } from "framer-motion";
+import Post from "../../Post"
+import AddComment from "../../AddComment"
+import Image from "next/image"
+import { useQuery } from "@tanstack/react-query"
+import { motion } from "framer-motion"
 
 type URL = {
   params: {
-    slug: string;
-  };
-  searchParams: string;
-};
+    slug: string
+  }
+  searchParams: string
+}
 
 const fetchDetails = async (slug: string) => {
-  const response = await fetch(`/api/posts/${slug}`);
-  return response.json();
+    const response = await fetch(`/api/posts/${slug}`);
+    return response.json();
 };
 
 export default function PostDetail(url: URL) {
   const { data, isLoading } = useQuery({
     queryKey: ["detail-post"],
     queryFn: () => fetchDetails(url.params.slug),
-  });
-  if (isLoading) return "Loading";
-  console.log(data);
+  })
+  if (isLoading) return "Loading"
+  console.log(data)
   return (
     <div>
       <Post
@@ -40,7 +40,7 @@ export default function PostDetail(url: URL) {
           animate={{ opacity: 1, scale: 1 }}
           initial={{ opacity: 0, scale: 0.8 }}
           transition={{ ease: "easeOut" }}
-          className="my-6 rounded-md bg-white p-8"
+          className="my-6 bg-white p-8 rounded-md"
           key={comment.id}
         >
           <div className="flex items-center gap-2">
@@ -58,5 +58,5 @@ export default function PostDetail(url: URL) {
         </motion.div>
       ))}
     </div>
-  );
+  )
 }
