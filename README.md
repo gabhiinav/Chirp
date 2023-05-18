@@ -20,6 +20,12 @@ npm install
 
 ```js
 DATABASE_URL=
+```
+
+### Setup .env.local file
+
+
+```js
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GITHUB_ID=
